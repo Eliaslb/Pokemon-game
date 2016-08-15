@@ -1,0 +1,42 @@
+pokecatch = math.random(1,172)
+
+//VERY COMMON
+if pokecatch >= 1 and <= 70 then
+	var2 = math.random(1,26)//Antal pokemons i sällsynthetsgraden t.ex 1,30 nästa 31,60
+
+//COMMON
+elseif pokecatch >= 71 and <= 110 then
+	var2 = math.random(27,40)
+
+//UNCOMMON
+elseif pokecatch >= 111 and <= 140 then
+	var2 = math.random(41,69)
+
+//RARE
+elseif pokecatch >= 141 and <= 153 then
+	var2 = math.random(70,89)
+
+//VERY RARE
+elseif pokecatch >= 154 and <= 160 then
+	var2 = math.random(90,108)
+
+//SPECIAL
+elseif pokecatch >= 161 and <= 165 then
+	var2 = math.random(109,115)
+
+//EPIC
+elseif pokecatch >= 166 and <= 169 then 
+	var2 = math.random(116,123)
+
+//LEGENDARY
+elseif pokecatch >= 170 and <= 172 then
+	var2 = math.random(124,129)
+end	
+
+pokenames[] = {name1, name2, name3, name4, name5,.....} Alla namn
+pokecatched[] = {false, false, false, false, false,....} Lika många false som pokemonnamnen
+
+pokecatched[var2] = true
+
+print("You caught "..pokenames[var2])
+xp = xp+500
