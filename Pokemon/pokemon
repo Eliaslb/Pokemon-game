@@ -1,0 +1,283 @@
+--Variables
+local Ver = 1.1
+local Pokefind = math.random(1,10)--Hur stor chans att hitta
+local Pokeamount = math.random(5,10)--Hur många som spawnas
+--local Pokerandom = math.random(1,230)--Vilken man får. Kanske sätta denna i function.
+local Pokecatch = math.random(1,2)--Chans att fånga
+local Pokemon = nil
+local IntroPlayed = false
+local lvl = 1
+local cp = 0
+local xp = 0 --Få 500 för varje fångad
+local levelupxp = 2000
+local day = 0
+local 1catchperday = 0
+
+--Powerlevel
+function lvlcp() 
+  if lvl == 1 then
+    cp = math.random(10,20)
+  elseif lvl == 2 then
+    cp = math.random(20,40)
+  elseif lvl == 3 then 
+    cp = math.random(40,70)
+  elseif lvl == 4 then
+    cp = math.random(70,100)
+  elseif lvl == 5 then
+    cp = math.random(70,100)
+  elseif lvl == 6 then
+    cp = math.random(90,120)
+  else
+    print("lvl invalid...")
+  end
+end
+
+function levelup()
+  if xp > levelupxp then
+  clear()
+  xp = 0
+  term.setCursorPos(20,5)
+  lvl = lvl+1
+  textutils.slowPrint("You are now level: "..lvl)
+  lvlcp()
+  end
+end
+  
+
+
+
+--Pokemons
+
+--Very Common
+local Caterpie = 0 --Om fångad sätts till 1
+local Caterpieid = --ID i math.random
+
+local Weedle = 0
+local Weedleid =
+
+local Pidgey = 0
+local Pidgeyid =
+
+local Ratata = 0
+local Ratataid =
+
+local Ekans = 0
+local Ekansid =
+
+local Sandshrew = 0
+local Sandshrewid =
+
+local NidoranFemale = 0
+local NidoranFemaleid =
+ 
+local NidoranMale = 0
+local NidoranMaleid =
+
+local Zubat = 0 
+local Zubatid =
+
+local Oddish = 0
+local Oddishid =
+
+local Paras = 0
+local Parasid =
+
+local Venonat = 0
+local Venonatid =
+
+local Meowth = 0
+local Meowthid =
+
+local Mankey = 0
+local Mankeyid =
+
+local Poliway = 0
+local Poliwayid =
+
+local Machop = 0
+local Machopid =
+
+local Bellsprout = 0
+local Bellsproutid =
+
+local Geodude = 0
+local Geodudeid =
+
+local Slowpoke = 0
+local Slowpokeid =
+
+local Magnemite = 0
+local Magnemiteid =
+
+local Gastly = 0
+local Gastlyid =
+
+local Krabby = 0
+local Krabbyid =
+
+local Voltorb = 0
+local Voltordid =
+--Common
+
+--Uncommon
+
+--Rare
+
+--Very Rare
+
+--Special
+
+--Epic
+
+--Legendary 
+
+
+--Location
+
+--Functions
+function clear()
+  term.clear()
+  term.setCursorPos(1,1)
+end
+--Mechanics
+function exit()
+exit, char = os.pullEvent("char")
+  char = string.lower(char)
+  if char == "q" then
+    sleep(1)
+    error("Game Quitted")
+  end
+end
+
+function mainscreen()
+--Variables
+local Catchhelper = 7
+--Printing 
+  if Catchhelper == 0 then
+    term.setCursorPos(20,5)
+    print("You can only catch one pokemon per day")
+    Catchhelper = 7
+  end
+  clear()
+  term.setCursorPos(20,5)
+  textutils.slowPrint("Catch Pokemon C")
+  term.setCursorPos(20,7)
+  textutils.slowPrint("Battle another trainer B")
+  term.setCursorPos(20,9)
+  textutils.slowPrint("Sleep S")
+  term.setCursorPos(1,1)
+  textutils.slowPrint("Daycount: "..day)
+--Keylogging
+  local main, char2 = os.pullEvent("char")
+  char2 = string.lower(char2)
+  if char2 == "c" then
+    clear()
+    catch()
+  elseif char2 == "b" then
+    clear()
+    battle()
+  elseif char2 == "s" then
+    clear() 
+    sleepingame()
+  end
+end
+
+function sleepingame()
+  day = day+1
+  1catchperday = 0
+  clear()
+  term.setCursorPos(20,5)
+  print("Sleeping...")
+  sleep(2)
+  clear()
+  term.serCursorPos(17,5)
+  print("Tomorrow is your "..day.." day as a Pokemon trainer") 
+  sleep(3)
+  clear()
+  mainscreen()
+end
+  
+
+function battle()
+
+end
+
+function catch()
+if 1catchperday == 0 then
+--Catchcodehere
+
+1catchperday = 1
+else
+  print("You already caught a pokemon today")
+end
+end
+  
+
+
+--Code
+  --Intro
+ clear()
+ term.setCursorPos(20,5)
+ textutils.slowPrint("Pokemon "..Ver)
+ term.setCursorPos(1,1)
+ print("Press Q to quit.")
+ sleep(3)
+ clear()
+ local c = "n"
+ while c == "n" do
+   clear()
+   term.setCursorPos(18,8)
+   textutils.slowWrite("What is your name? ")
+   name = read()
+   sleep(1)
+   clear()
+   term.setCursorPos(17,8)
+   write("Your name is "..name.."? y/n ")
+   local c
+   while true do
+     evt, c = os.pullEvent("char")
+     c = string.lower(c)
+     if c == "y" then
+       break
+     elseif c == "n" then
+       break
+     end
+   end
+   if c == "y" then
+     break
+   end    
+ end 
+ 
+ 
+ clear()
+ 
+ term.setCursorPos(20,10)
+ 
+ print("Nice to meet you "..name)
+ sleep(2)
+ clear()
+ term.setCursorPos(20,9)
+ print("Lets catch some Pokemons!")
+ sleep(2)
+ IntroPlayed = true
+ 
+ if IntroPlayed == true then
+ else error("Intro not played")
+ end
+--Game
+while true do
+  lvlup()
+  lvlcp()
+  exit()
+  clear()
+  mainscreen() 
+  
+end
+
+
+  
+  
+  
+
+  
+    
