@@ -11,7 +11,7 @@ local cp = 0
 local xp = 0 --Få 500 för varje fångad
 local levelupxp = 2000
 local day = 0
-local 1catchperday = 0
+local catchperday = 0
 
 --Powerlevel
 function lvlcp() 
@@ -50,73 +50,73 @@ end
 
 --Very Common
 local Caterpie = 0 --Om fångad sätts till 1
-local Caterpieid = --ID i math.random
+local Caterpieid = 0 --ID i math.random
 
 local Weedle = 0
-local Weedleid =
+local Weedleid = 0
 
 local Pidgey = 0
-local Pidgeyid =
+local Pidgeyid = 0
 
 local Ratata = 0
-local Ratataid =
+local Ratataid = 0
 
 local Ekans = 0
-local Ekansid =
+local Ekansid = 0
 
 local Sandshrew = 0
-local Sandshrewid =
+local Sandshrewid = 0
 
 local NidoranFemale = 0
-local NidoranFemaleid =
+local NidoranFemaleid = 0
  
 local NidoranMale = 0
-local NidoranMaleid =
+local NidoranMaleid = 0
 
 local Zubat = 0 
-local Zubatid =
+local Zubatid = 0
 
 local Oddish = 0
-local Oddishid =
+local Oddishid = 0
 
 local Paras = 0
-local Parasid =
+local Parasid = 0
 
 local Venonat = 0
-local Venonatid =
+local Venonatid = 0
 
 local Meowth = 0
-local Meowthid =
+local Meowthid = 0
 
 local Mankey = 0
-local Mankeyid =
+local Mankeyid = 0
 
 local Poliway = 0
-local Poliwayid =
+local Poliwayid = 0
 
 local Machop = 0
-local Machopid =
+local Machopid = 0
 
 local Bellsprout = 0
-local Bellsproutid =
+local Bellsproutid = 0
 
 local Geodude = 0
-local Geodudeid =
+local Geodudeid = 0
 
 local Slowpoke = 0
-local Slowpokeid =
+local Slowpokeid = 0
 
 local Magnemite = 0
-local Magnemiteid =
+local Magnemiteid = 0
 
 local Gastly = 0
-local Gastlyid =
+local Gastlyid = 0
 
 local Krabby = 0
-local Krabbyid =
+local Krabbyid = 0
 
 local Voltorb = 0
-local Voltordid =
+local Voltordid = 0
 --Common
 
 --Uncommon
@@ -155,7 +155,7 @@ local Catchhelper = 7
 --Printing 
   if Catchhelper == 0 then
     term.setCursorPos(20,5)
-    print("You can only catch one pokemon per day")
+    print("You can only catch 7 pokemon per day")
     Catchhelper = 7
   end
   clear()
@@ -203,13 +203,158 @@ function battle()
 end
 
 function catch()
-if 1catchperday == 0 then
+--Variables
+local pokecatch = math.random(1,172)
+local pokewhich = 0
+local pokename[] = {}
+local pokecatched[] = {false, false, false, false, false}
+local gainedxp = 0
+--Code
+--Very common
+if pokecatch >= 1 and pokecatch <= 70 then
+  pokewhich = math.random(1,26)
+
+  if pokecatched[pokewhich] == true then
+    xp = xp+100
+    gainedxp = 100
+  elseif pokecatched[pokewhich] == false then
+    xp = xp+200
+    gainedxp = 200
+  end
+  clear()
+  term.setCursorPos(15,8)
+  print("You caught "..pokename[pokewhich].." You got "..gainedxp.."XP") 
+  pokecatched[pokewhich] = true
+  mainscreen()
+end
+--Common
+if pokecatch >= 71 and pokecatch <= 110 then
+  pokewhich = math.random(27,66)
+  if pokecatched[pokewhich] == true then
+    xp = xp+150
+    gainedxp = 150
+  elseif pokecatched[pokewhich] == false then
+    xp = xp+250
+    gainedxp = 250
+  end
+  clear()
+  term.setCursorPos(15,8)
+  print("You caught "..pokename[pokewhich].." You got "..gainedxp.."XP")
+  pokecatched[pokewhich] = true
+  mainscreen()
+end
+--Uncommon
+if pokecatch >= 111 and pokecatch <= 140 then
+  pokewhich = math.random(67,96)
+  if pokecatched[pokewhich] == true then
+    xp = xp+200
+    gainedxp = 200
+  elseif pokecatched[pokewhich] == false then
+    xp = xp+300
+    gainedxp = 300
+  end
+  clear()
+  term.setCursorPos(15,8)
+  print("You caught "..pokename[pokewhich].." You got "..gainedxp.."XP")
+  pokecatched[pokewhich] = true
+  mainscreen()
+end 
+--Rare
+if pokecatch >= 141 and pokecatch <= 153 then
+  pokewhich = math.random(97,116)
+  if pokecatched[pokewhich] == true then 
+    xp = xp+300
+    gainedxp = 300
+  elseif pokecatched[pokewhich] == false then
+    xp = xp+500
+    gainedxp = 500
+  end
+  clear()
+  term.setCursorPos(15,8)
+  print("You caught "..pokename[pokewhich].." You got "..gainedxp.."XP")
+  pokecatched[pokewhich] = true
+  mainscreen()
+end
+
+--Very rare
+if pokecatch >= 154 and pokecatch <= 160 then
+  pokewhich = math.random(117,135)
+  if pokecatched[pokewhich] == true then
+    xp = xp+500
+    gainedxp = 500
+  elseif pokecatched[pokewhich] == false then
+    xp = xp+600
+    gainedxp = 600
+  end
+  clear()
+  term.setCursorPos(15,8)
+  print("You caught "..pokename[pokewhich].." You got "..gainedxp.."XP")
+  pokecatched[pokewhich] = true
+  mainscreen()
+end
+
+--Special
+if pokecatch >= 161 and pokecatch <= 165 then
+  pokewhich = math.random(136,142)
+  if pokecatched[pokewhich] == true then
+    xp = xp+700
+    gainedxp = 700
+  elseif pokecatched[pokewhich] == false then
+    xp = xp+1000
+    gainedxp = 1000
+  end
+  clear()
+  term.setCusorPos(15,8)
+  print("You caught "..pokename[pokewhich].." You got "..gainedxp.."XP")
+  pokecatched[pokewhich] = true
+  mainscreen()
+end
+
+--Epic
+if pokecatch >= 166 and pokecatch <= 169 then
+  pokewhich = math.random(143,150)
+  if pokecatched[pokewhich] == true then
+    xp = xp+1000
+    gainedxp = 1000
+  elseif pokecatched[pokewhich] == false then
+    xp = xp+1500
+    gainedxp = 1500
+  end
+  clear()
+  term.setCursorPos(15,8)
+  print("You caught "..pokename[pokewhich].." You got "..gainedxp.."XP")
+  pokecatched[pokewhich] = true
+  mainscreen()
+end
+--Legendary
+if pokecatch >= 170 and pokecatch <= 172 then
+  pokewhich = math.random(151,155)
+  if pokecatched[pokewhich] == true then
+    xp = xp+1700
+    gainedxp = 1700
+  elseif pokecatched[pokewich] == false then
+    xp = xp+2000
+    gainedxp = 2000
+  end
+  clear()
+  term.setCursorPos(15,8)
+  print("You caught "..pokename[pokewhich].." You got "..gainedxp.."XP")
+  pokecatched[pokewhich] = true
+  mainscreen()
+end
+
+
+
+
+
+
+--if 1catchperday == 0 then
 --Catchcodehere
 
-1catchperday = 1
-else
-  print("You already caught a pokemon today")
-end
+--1catchperday = 1
+--else
+  --print("You already caught a pokemon today")
+--end
 end
   
 
